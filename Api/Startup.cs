@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Repository.Context;
+using Repository.Repositories;
+using Repository.UnitOfWork;
 
 namespace Api
 {
@@ -32,6 +34,9 @@ namespace Api
             services.AddDbContext<AppDbContext>(optionBuilder => {
                 optionBuilder.UseMySql(Configuration["ConnectionStrings:MySQL"]);
             });
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
