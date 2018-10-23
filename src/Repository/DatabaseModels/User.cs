@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace DatabaseModels.Models
+namespace Repository.DatabaseModels
 {
-    public class User
+    internal class User
     {
         public int Id { get; set; }
 

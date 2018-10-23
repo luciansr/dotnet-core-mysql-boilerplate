@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DatabaseModels.Models;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using Repository.Context;
+using Repository.DatabaseModels;
 
 namespace Repository.Repositories
 {
@@ -18,7 +18,8 @@ namespace Repository.Repositories
         }
         public UserDTO GetUserById(int id)
         {
-            return _dbSet.Where(u => u.Id == id).Select(u => new UserDTO {
+            return _dbSet.Where(u => u.Id == id).Select(u => new UserDTO
+            {
                 Id = u.Id,
                 Username = u.Username,
                 Name = u.Name
@@ -27,7 +28,8 @@ namespace Repository.Repositories
 
         public IEnumerable<UserDTO> GetAll()
         {
-            return _dbSet.Select(u => new UserDTO {
+            return _dbSet.Select(u => new UserDTO
+            {
                 Id = u.Id,
                 Username = u.Username,
                 Name = u.Name
