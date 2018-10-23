@@ -15,3 +15,10 @@ dotnet run -p Api/Api.csproj
 cd Tests
 dotnet test
 ```
+
+## How to create Migrations
+1. Run:
+```sh
+cd src
+dotnet ef migrations -p Repository/Repository.csproj -s Api/Api.csproj add <Migration_Name>
+```

@@ -1,6 +1,5 @@
+using DatabaseModels.Models;
 using Microsoft.EntityFrameworkCore;
-using Repository.DbModels;
-
 namespace Repository.Context
 {
     public class AppDbContext : DbContext

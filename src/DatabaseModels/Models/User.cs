@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Repository.DbModels
+namespace DatabaseModels.Models
 {
     public class User
     {
