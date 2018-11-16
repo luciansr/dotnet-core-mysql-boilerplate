@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,10 +12,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Models.Auth;
 using Repository.Context;
 using Repository.Repositories;
 using Repository.UnitOfWork;
 using Services;
+using Services.Auth;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Api
@@ -26,12 +29,16 @@ namespace Api
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            JwtConfig jwtConfig = new JwtConfig(Configuration["JwtAuth:Issuer"], Configuration["JwtAuth:Audience"], Configuration["JwtAuth:SecretKey"]);
+
+            services.AddJwtAuthentication(jwtConfig);
 
             services.AddSwaggerGen(c =>
             {
@@ -46,6 +53,9 @@ namespace Api
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<UserRepository>();
             services.AddTransient<UserService>();
+
+            services.AddSingleton<JwtConfig>(jwtConfig);
+            services.AddTransient<AuthService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,6 +81,8 @@ namespace Api
             });
 
             app.UseHttpsRedirection();
+
+            app.UseAuthentication();
             app.UseMvc();
         }
     }
