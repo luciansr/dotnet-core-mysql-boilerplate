@@ -17,7 +17,7 @@ dotnet run -p Api/Api.csproj
 1. Run:
 ```sh
 cd src/Tests
-dotnet test
+dotnet test Tests/Tests.csproj
 ```
 
 ## How to create Migrations
@@ -25,4 +25,11 @@ dotnet test
 ```sh
 cd src
 dotnet ef migrations -p Repository/Repository.csproj -s Api/Api.csproj add <Migration_Name>
+```
+
+## How to run Docker
+
+```
+cd src
+docker build -t lucian/dotnetcore .
 ```
