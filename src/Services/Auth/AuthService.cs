@@ -24,7 +24,7 @@ namespace Services.Auth
         public string BuildToken(string username, string password)
         {
             if (!UserAndPasswordAreValid(username, password)) return null;
-            
+
             var claims = new[]
             {
                 new Claim("Id", "1"),
@@ -42,7 +42,6 @@ namespace Services.Auth
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-
         }
     }
 }
