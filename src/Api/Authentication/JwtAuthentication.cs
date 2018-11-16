@@ -26,10 +26,5 @@ namespace Api.Authentication
                 };
             });            
         }
-
-        public static void AddJwtAuthentication(this IApplicationBuilder app)
-        {
-            // app.UseAuthentication();
-        }
     }
 }
