@@ -11,6 +11,9 @@ namespace Api.Controllers
     [ApiController]
     public class ProtectedController : JwtController
     {
+        /// <summary>
+        /// To access this method use Bearer Token Auth with the Jwt Token acquired from "/token" endpoint 
+        /// </summary>
         [HttpGet]
         [Authorize]
         public ActionResult<IEnumerable<string>> Get()

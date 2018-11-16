@@ -9,10 +9,14 @@ dotnet build
 dotnet run -p Api/Api.csproj
 ```
 
+## See API Methods
+1. Run
+2. Go to: ```https://localhost:5001/swagger```
+
 ## How to test
 1. Run:
 ```sh
-cd Tests
+cd src/Tests
 dotnet test
 ```
 
