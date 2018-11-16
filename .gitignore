@@ -1,5 +1,6 @@
 
-# Created by https://www.gitignore.io/api/rider,aspnetcore
+# Created by https://www.gitignore.io/api/rider,aspnetcore,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=rider,aspnetcore,visualstudiocode
 
 ### ASPNETCore ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -149,7 +150,7 @@ publish/
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
-# Comment the next line if you want to checkin your web deploy settings
+# TODO: Comment the next line if you want to checkin your web deploy settings
 # but database connection strings (with potential passwords) will be unencrypted
 *.pubxml
 *.publishproj
@@ -339,5 +340,15 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-# End of https://www.gitignore.io/api/rider,aspnetcore
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+# End of https://www.gitignore.io/api/rider,aspnetcore,visualstudiocode
