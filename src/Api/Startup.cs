@@ -88,6 +88,8 @@ namespace Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
+            app.UseCors(b => b.AllowAnyOrigin());
+
             app.UseHttpsRedirection();
 
             app.UseAuthentication();
