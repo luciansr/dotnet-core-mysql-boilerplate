@@ -1,0 +1,1 @@
+# dotnet-core-mysql-boilerplate
