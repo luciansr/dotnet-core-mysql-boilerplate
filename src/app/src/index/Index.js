@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import logo from '../logo.svg';
-import Navbar from '../navbar/Navbar';
+import Navbar from './navbar/Navbar';
 
 class Index extends Component {
   render() {
