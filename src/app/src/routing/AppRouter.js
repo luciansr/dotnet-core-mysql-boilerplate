@@ -12,7 +12,7 @@ const Login = () => <div>
 const AppRouter = () => (
   <Router>
     <div>
-      <Redirect exact from="/" to="login" />
+      {/* <Redirect exact from="/" to="login" /> */}
       <Route path={indexUrl} component={Index} />
       <Route path="/login" component={Login} />
     </div>
