@@ -12,7 +12,7 @@ class Index extends Component {
   render() {
     return (
       <div>
-        <MyNavbar></MyNavbar>
+        <MyNavbar currentRoute={this.match}></MyNavbar>
         <div className="homePage">
           <IndexRouter match={this.match}></IndexRouter>
         </div>

@@ -40,13 +40,13 @@ export default class MyNavbar extends React.Component {
                 <NavLink><Link to="/login">Login</Link></NavLink>                
               </NavItem>
               <NavItem>
-                <NavLink><Link to="/index">Index</Link></NavLink>                
+                <NavLink><Link to={`${this.props.currentRoute.path}`}>Index</Link></NavLink>                
               </NavItem>
               <NavItem>
-                <NavLink><Link to="/index/page1">Inner Page 1</Link></NavLink>                
+                <NavLink><Link to={`${this.props.currentRoute.path}/page1`}>Inner Page 1</Link></NavLink>                
               </NavItem>
               <NavItem>
-                <NavLink><Link to="/index/page2">Inner Page 2</Link></NavLink>                
+                <NavLink><Link to={`${this.props.currentRoute.path}/page2`}>Inner Page 2</Link></NavLink>                
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
