@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
-import logo from '../logo.svg';
-import Navbar from './navbar/Navbar';
+import MyNavbar from './navbar/MyNavbar';
+import IndexRouter from '../routing/IndexRouter';
 
 class Index extends Component {
+  match;
+  constructor({match}) {
+    super();
+    this.match = match;
+  }
   render() {
     return (
       <div>
-        <Navbar></Navbar>
+        <MyNavbar></MyNavbar>
         <div className="homePage">
-            <Jumbotron>
-                <h1 className="display-3">Hello, world!</h1>
-                <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
-                <hr className="my-2" />
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                <p className="lead">
-                <Button color="primary">Learn More</Button>
-                </p>
-            </Jumbotron>
+          <IndexRouter match={this.match}></IndexRouter>
         </div>
       </div>
     );
