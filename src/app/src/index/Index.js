@@ -3,7 +3,7 @@ import { Jumbotron, Button } from 'reactstrap';
 import logo from '../logo.svg';
 import Navbar from '../navbar/Navbar';
 
-class Home extends Component {
+class Index extends Component {
   render() {
     return (
       <div>
@@ -24,4 +24,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Index;
