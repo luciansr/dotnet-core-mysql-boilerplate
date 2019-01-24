@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Models.Auth;
 using Repository.DatabaseModels;
 
 namespace Repository.Context
@@ -8,6 +9,7 @@ namespace Repository.Context
         internal DbSet<User> Users { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

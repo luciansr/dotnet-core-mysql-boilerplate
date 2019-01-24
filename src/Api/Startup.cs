@@ -38,9 +38,10 @@ namespace Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            JwtConfig jwtConfig = new JwtConfig(Configuration["JwtAuth:Issuer"], Configuration["JwtAuth:Audience"], Configuration["JwtAuth:SecretKey"]);
-
+            var jwtConfig = new JwtConfig();
+            Configuration.Bind(nameof(JwtConfig), jwtConfig);
             services.AddJwtAuthentication(jwtConfig);
+            services.AddSingleton(jwtConfig);
 
             services.AddSwaggerGen(c =>
             {
@@ -61,8 +62,6 @@ namespace Api
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<UserRepository>();
             services.AddTransient<UserService>();
-
-            services.AddSingleton<JwtConfig>(jwtConfig);
             services.AddTransient<AuthService>();
         }
 
