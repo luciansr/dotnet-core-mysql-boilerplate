@@ -1,0 +1,32 @@
+version: '3'
+services:
+  mariadb:
+    build: 
+      context: ./docker/mariadb
+      dockerfile: Dockerfile
+    # networks:
+    #   - my_network
+    container_name: mariadb-container
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    expose:
+      - "3306"
+
+  dotnet-api:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    # networks:
+    #   - my_network
+    links:
+      - "mariadb:database"
+    container_name: dotnet-core-container
+    ports:
+      - "5000:5000"
+    environment:
+      - ConnectionStrings__MySQL=Server=database;User Id=root;Password=root;Database=db-boilerplate
+      - JwtConfig__Issuer=dotnet.boilerplate.com
+      - JwtConfig__Audience=dotnet-audience.boilerplate.com
+      - JwtConfig__SecretKey=4Ypg%}QC:6!)Vi5r;6a##0{Qk=^r``i>4d[$XkS[vE&cnVh._Lf|#<(6:Vh}Mg^
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:5000 
