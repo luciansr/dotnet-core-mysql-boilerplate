@@ -1,5 +1,14 @@
 # dotnet-core-mysql-boilerplate
 
+## How to run docker compose
+```sh
+docker-compose up
+```
+
+## See API Methods
+1. Run
+2. Go to: ```http://localhost:5000/swagger```
+
 ## How to run 
 1. Install dotnet core sdk
 2. Run:
@@ -8,10 +17,6 @@ cd src/
 dotnet build
 dotnet run -p Api/Api.csproj
 ```
-
-## See API Methods
-1. Run
-2. Go to: ```https://localhost:5001/swagger```
 
 ## How to test
 1. Run:
@@ -32,4 +37,5 @@ dotnet ef migrations -p Repository/Repository.csproj -s Api/Api.csproj add <Migr
 ```
 cd src
 docker build -t lucian/dotnetcore .
+docker run --name dotnetcore -d -p 5000:5000 lucian/dotnetcore
 ```

@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:sdk as builder  
+FROM microsoft/dotnet:2.2-sdk-alpine as builder  
  
 RUN mkdir -p /root/src/app/dotnet-core-boilerplate
 WORKDIR /root/src/app/dotnet-core-boilerplate
@@ -17,7 +17,7 @@ RUN dotnet test Tests/Tests.csproj
 RUN dotnet publish -c Release -o published Api/Api.csproj
 
 # FROM microsoft/dotnet:2.0.0-runtime
-FROM microsoft/dotnet-nightly:2.2-runtime-alpine as dotnet-alpine
+FROM microsoft/dotnet:2.2-aspnetcore-runtime-alpine as dotnet-alpine
 
 WORKDIR /root/  
 COPY --from=builder /root/src/app/dotnet-core-boilerplate/Api/published .
