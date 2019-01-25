@@ -17,7 +17,7 @@ RUN dotnet test Tests/Tests.csproj
 RUN dotnet publish -c Release -o published Api/Api.csproj
 
 # FROM microsoft/dotnet:2.0.0-runtime
-FROM microsoft/dotnet-nightly:2.1-runtime-alpine as dotnet-alpine
+FROM microsoft/dotnet-nightly:2.2-runtime-alpine as dotnet-alpine
 
 WORKDIR /root/  
 COPY --from=builder /root/src/app/dotnet-core-boilerplate/Api/published .

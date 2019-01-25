@@ -21,7 +21,9 @@ namespace Api
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel()
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .ConfigureKestrel((context, options) => {
+                    // Set properties and call methods on options
+                });
     }
 }
