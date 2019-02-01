@@ -9,11 +9,11 @@ namespace Services.Auth
 {
     public class AuthService
     {
-        private readonly JwtConfig _jwtConfig;
+        private JwtTokenBuilder _jwtTokenBuilder;
 
-        public AuthService(JwtConfig jwtConfig)
+        public AuthService(JwtTokenBuilder jwtTokenBuilder)
         {
-            _jwtConfig = jwtConfig;
+            _jwtTokenBuilder = jwtTokenBuilder;
         }
 
         public bool UserAndPasswordAreValid(string username, string password)
@@ -21,27 +21,23 @@ namespace Services.Auth
             return true;
         }
 
-        public string BuildToken(string username, string password)
+        public Claim[] GetUserClaims(String username)
         {
-            if (!UserAndPasswordAreValid(username, password)) return null;
-
-            var claims = new[]
+            return new []
             {
                 new Claim("Id", "1"),
                 new Claim(ClaimTypes.Name, username)
             };
+        }
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtConfig.SecretKey));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: _jwtConfig.Issuer,
-                audience: _jwtConfig.Audience,
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(30),
-                signingCredentials: creds);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+        public string BuildToken(string username, string password)
+        {
+            if (!UserAndPasswordAreValid(username, password))
+            {
+                return null;
+            }
+            
+            return _jwtTokenBuilder.BuildToken(DateTime.Now, 30, GetUserClaims(username));
         }
     }
 }
