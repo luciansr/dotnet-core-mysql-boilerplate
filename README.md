@@ -40,3 +40,4 @@ docker build -t lucian/dotnetcore .
 docker run --name dotnetcore -d -p 5000:5000 lucian/dotnetcore
 ```  
  
+ 
