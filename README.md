@@ -38,4 +38,4 @@ dotnet ef migrations -p Repository/Repository.csproj -s Api/Api.csproj add <Migr
 cd src
 docker build -t lucian/dotnetcore .
 docker run --name dotnetcore -d -p 5000:5000 lucian/dotnetcore
-```
+```  
